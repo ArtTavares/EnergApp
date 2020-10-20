@@ -11,9 +11,7 @@ class RecuperarSenhaPage extends StatefulWidget {
 }
 
 class _RecuperarSenhaPageState extends State<RecuperarSenhaPage> {
-  var _nome = TextEditingController();
   var _email = TextEditingController();
-  var _senha = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return scaffold(context, "Recuperar Senha", body(context),

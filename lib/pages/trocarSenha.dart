@@ -1,22 +1,23 @@
 import 'package:energapp/pages/login.dart';
-import 'package:energapp/pages/trocarSenha.dart';
 import 'package:energapp/shared/button.dart';
 import 'package:energapp/shared/divider.dart';
 import 'package:energapp/shared/input.dart';
 import 'package:energapp/shared/scaffold.dart';
 import 'package:flutter/material.dart';
 
-class CodigoRecuperarSenhaPage extends StatefulWidget {
+class TrocarSenhaPage extends StatefulWidget {
   @override
-  _CodigoRecuperarSenhaPageState createState() =>
-      _CodigoRecuperarSenhaPageState();
+  _TrocarSenhaPageState createState() => _TrocarSenhaPageState();
 }
 
-class _CodigoRecuperarSenhaPageState extends State<CodigoRecuperarSenhaPage> {
-  var _codigo = TextEditingController();
+class _TrocarSenhaPageState extends State<TrocarSenhaPage> {
+  var _nome = TextEditingController();
+  var _email = TextEditingController();
+  var _senha = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return scaffold(context, "Código", body(context), isVisibleOutLogin: false);
+    return scaffold(context, "Recuperar Senha", body(context),
+        isVisibleOutLogin: false);
   }
 
   Widget body(BuildContext context) {
@@ -24,16 +25,16 @@ class _CodigoRecuperarSenhaPageState extends State<CodigoRecuperarSenhaPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        input(context, _codigo, "Código", "errorText"),
+        input(context, _email, "Nova Senha", "errorText"),
+        input(context, _email, "Confirmar Nova Senha", "errorText"),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
           child: button(
               context,
-              "Recuperar Senha",
+              "Salvar",
               () => {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (context) => TrocarSenhaPage()),
+                        MaterialPageRoute(builder: (context) => LoginPage()),
                         ModalRoute.withName('/'))
                   }),
         ),
