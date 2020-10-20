@@ -1,4 +1,3 @@
-import 'package:energapp/pages/editar.dart';
 import 'package:energapp/pages/login.dart';
 import 'package:energapp/shared/color.dart';
 import 'package:flutter/material.dart';

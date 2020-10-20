@@ -1,22 +1,23 @@
-import 'package:energapp/pages/login.dart';
+import 'package:energapp/pages/codigoRecuperarSenha.dart';
 import 'package:energapp/shared/button.dart';
 import 'package:energapp/shared/divider.dart';
 import 'package:energapp/shared/input.dart';
 import 'package:energapp/shared/scaffold.dart';
 import 'package:flutter/material.dart';
 
-class CadastroUsuarioPage extends StatefulWidget {
+class RecuperarSenhaPage extends StatefulWidget {
   @override
-  _CadastroUsuarioPageState createState() => _CadastroUsuarioPageState();
+  _RecuperarSenhaPageState createState() => _RecuperarSenhaPageState();
 }
 
-class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
+class _RecuperarSenhaPageState extends State<RecuperarSenhaPage> {
   var _nome = TextEditingController();
   var _email = TextEditingController();
   var _senha = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return scaffold(context, "Cadastro", body(context));
+    return scaffold(context, "Recuperar Senha", body(context),
+        isVisibleOutLogin: false);
   }
 
   Widget body(BuildContext context) {
@@ -24,17 +25,15 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        input(context, _nome, "Nome", "errorText"),
-        input(context, _email, "Email", "errorText"),
-        input(context, _senha, "Senha", "errorText"),
+        input(context, _email, "Email de recuperação de senha", "errorText"),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
           child: button(
               context,
-              "Entrar",
+              "Enviar Código",
               () => {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginPage()))
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => CodigoRecuperarSenhaPage()))
                   }),
         ),
       ],

@@ -1,4 +1,5 @@
 import 'package:energapp/pages/cadastroUser.dart';
+import 'package:energapp/pages/recuperarSenha.dart';
 import 'package:energapp/pages/tab.dart';
 import 'package:energapp/shared/button.dart';
 import 'package:energapp/shared/divider.dart';
@@ -56,8 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 11),
                 ),
                 onTap: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => CadastroUsuarioPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => RecuperarSenhaPage()));
                 },
               ),
             ],
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               context,
               "Entrar Sem Login",
               () => {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => TabPage()))
                   }),
         )

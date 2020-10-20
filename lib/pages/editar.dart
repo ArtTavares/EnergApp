@@ -29,7 +29,9 @@ class _EditarPageState extends State<EditarPage> {
               keyboardType: TextInputType.number),
           divider(context, height: MediaQuery.of(context).size.height * 0.05),
           Center(
-            child: button(context, "Salvar", () => {}, witdh: 0.8),
+            child: button(
+                context, "Salvar", () => {Navigator.of(context).pop()},
+                witdh: 0.8),
           ),
         ]);
   }

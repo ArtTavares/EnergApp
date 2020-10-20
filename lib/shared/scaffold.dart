@@ -18,8 +18,10 @@ Widget scaffold(BuildContext context, String titulo, Widget body,
               visible: isVisibleOutLogin,
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      ModalRoute.withName('/'));
                 },
                 color: customRoxoColor,
                 elevation: 0,

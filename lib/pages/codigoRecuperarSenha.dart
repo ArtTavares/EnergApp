@@ -5,18 +5,17 @@ import 'package:energapp/shared/input.dart';
 import 'package:energapp/shared/scaffold.dart';
 import 'package:flutter/material.dart';
 
-class CadastroUsuarioPage extends StatefulWidget {
+class CodigoRecuperarSenhaPage extends StatefulWidget {
   @override
-  _CadastroUsuarioPageState createState() => _CadastroUsuarioPageState();
+  _CodigoRecuperarSenhaPageState createState() =>
+      _CodigoRecuperarSenhaPageState();
 }
 
-class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
-  var _nome = TextEditingController();
-  var _email = TextEditingController();
-  var _senha = TextEditingController();
+class _CodigoRecuperarSenhaPageState extends State<CodigoRecuperarSenhaPage> {
+  var _codigo = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return scaffold(context, "Cadastro", body(context));
+    return scaffold(context, "Código", body(context), isVisibleOutLogin: false);
   }
 
   Widget body(BuildContext context) {
@@ -24,17 +23,16 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        input(context, _nome, "Nome", "errorText"),
-        input(context, _email, "Email", "errorText"),
-        input(context, _senha, "Senha", "errorText"),
+        input(context, _codigo, "Código", "errorText"),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
           child: button(
               context,
-              "Entrar",
+              "Recuperar Senha",
               () => {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginPage()))
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        ModalRoute.withName('/'))
                   }),
         ),
       ],
