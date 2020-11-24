@@ -1,3 +1,5 @@
+import 'package:energapp/services/sharedPreferences.dart';
+import 'package:energapp/services/userService.dart';
 import 'package:energapp/pages/cadastroUser.dart';
 import 'package:energapp/pages/recuperarSenha.dart';
 import 'package:energapp/pages/tab.dart';
@@ -66,14 +68,14 @@ class _LoginPageState extends State<LoginPage> {
         ),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
-          child: button(
-              context,
-              "Entrar",
-              () => {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => TabPage()))
-                  }),
-        ),
+            child: button(context, "Entrar", () async {
+          var logado = await signIn(_login.text, _password.text);
+          if (logado.user.email != null) {
+            saveId(logado.user.uid);
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => TabPage()));
+          }
+        })),
         divider(context),
         Center(
           child: button(

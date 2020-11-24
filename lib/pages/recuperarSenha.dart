@@ -1,4 +1,6 @@
 import 'package:energapp/pages/codigoRecuperarSenha.dart';
+import 'package:energapp/pages/login.dart';
+import 'package:energapp/services/userService.dart';
 import 'package:energapp/shared/button.dart';
 import 'package:energapp/shared/divider.dart';
 import 'package:energapp/shared/input.dart';
@@ -26,13 +28,11 @@ class _RecuperarSenhaPageState extends State<RecuperarSenhaPage> {
         input(context, _email, "Email de recuperação de senha", "errorText"),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
-          child: button(
-              context,
-              "Enviar Código",
-              () => {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => CodigoRecuperarSenhaPage()))
-                  }),
+          child: button(context, "Recuperar Senha", () async {
+            await recoveryPassword(_email.text);
+            await Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => LoginPage()));
+          }),
         ),
       ],
     );

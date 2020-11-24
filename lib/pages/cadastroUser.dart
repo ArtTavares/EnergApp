@@ -1,4 +1,5 @@
 import 'package:energapp/pages/login.dart';
+import 'package:energapp/services/userService.dart';
 import 'package:energapp/shared/button.dart';
 import 'package:energapp/shared/divider.dart';
 import 'package:energapp/shared/input.dart';
@@ -29,13 +30,13 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
         input(context, _senha, "Senha", "errorText"),
         divider(context, height: MediaQuery.of(context).size.height * 0.05),
         Center(
-          child: button(
-              context,
-              "Entrar",
-              () => {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginPage()))
-                  }),
+          child: button(context, "Entrar", () async {
+            var incluido = await insert(_email.value.text, _senha.value.text);
+            if (incluido != null) {
+              await await Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage()));
+            }
+          }),
         ),
       ],
     );
